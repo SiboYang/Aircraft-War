@@ -1,4 +1,4 @@
-import CreateRoom from './preGame/createRoom';
+import CreateRoom from './preGame/CreateRoom';
 import './App.css';
 
 function App() {
