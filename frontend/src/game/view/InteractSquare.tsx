@@ -1,1 +1,1 @@
-te
+export default undefined

@@ -1,4 +1,4 @@
-const enum SelectState {
+enum SelectState {
     Occupied,
     Overlapped,
     Undecided,

@@ -1,12 +1,14 @@
+import {Button} from '@material-ui/core'
+import { makeStyles } from '@material-ui/styles'
+import DisplayState from '../enums/DisplayState'
 
-
-interface DisplayingSquareProps {
+interface DisplaySquareProps {
     mode: string;
 }
 
 
-const DisplayingSquare = (props: DisplayingSquareProps) => {
+const DisplaySquare = ({mode}: DisplaySquareProps) => {
 
 }
 
-export default DisplayingSquare
+export default DisplaySquare

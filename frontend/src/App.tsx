@@ -1,10 +1,13 @@
 import CreateRoom from './preGame/CreateRoom';
+import SelectPage from './game/view/SelectPage';
 import './App.css';
+import {useEffect} from 'react'
 
 function App() {
+
   return (
     <div className="App">
-      <CreateRoom></CreateRoom>
+      <SelectPage></SelectPage>
     </div>
   );
 }

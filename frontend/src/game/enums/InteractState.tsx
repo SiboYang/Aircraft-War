@@ -1,4 +1,4 @@
-const enum InteractState {
+enum InteractState {
     onTarget,
     Miss,
     Available,

@@ -1,17 +1,23 @@
-import SelcectState from "../enums/SelectState"
-
+import SelectState from "../enums/SelectState"
 
 class SelectBoard {
 
-    private boardState: Array<Array<DisplayState>>
+    private boardState: Array<Array<SelectState>>
     constructor() {
-        this.boardState = new Array(9).fill(new Array(9).fill(DisplayState.Free));
+        
+        this.boardState = new Array(9)
+        for (let i=0; i<9; i++) this.boardState[i] = new Array(9).fill(SelectState.Free)
     }
 
-    placePlane(position: Array<Array<[number, number]>>) {
-        const flatedPosition = position.flat()
+    /**
+     * 
+     * @param position the position of aircraft that the player decides to place
+     * @returns 
+     */
+    placeAircraft(position: Array<Array<[number, number]>>) {
+        const flatedPosition = position.flat();
         for (let i=0; i<flatedPosition.length; i++) {
-            this.boardState[flatedPosition[i][1]][flatedPosition[i][0]] = DisplayState.Occupied;
+            this.boardState[flatedPosition[i][1]][flatedPosition[i][0]] = SelectState.Occupied;
         }
     }
 
@@ -19,3 +25,5 @@ class SelectBoard {
         return this.boardState
     }
 }
+
+export default SelectBoard
