@@ -1,7 +1,6 @@
-import CreateRoom from './preGame/CreateRoom';
-import SelectPage from './game/view/SelectPage';
-import './App.css';
-import {useEffect} from 'react'
+import CreateRoom from "./preGame/CreateRoom";
+import SelectPage from "./game/view/SelectPage";
+import "./App.css";
 
 function App() {
 

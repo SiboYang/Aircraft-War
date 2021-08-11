@@ -23,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
 
     overlapped: {
       width: squareSize,
-      height: squareSize
+      height: squareSize,
+      backgroundColor: 'black'
     },
 
     undecided: {
@@ -41,10 +42,10 @@ const SelectSquare = ({ mode }: SelelctSquareProps) => {
       return <Button variant='contained' className={classes.free} color='primary'></Button>
 
     case SelectState.Occupied:
-      return <Button variant='contained' className={classes.occupied} color='secondary'></Button>
+      return <Button variant='contained' className={classes.occupied} ></Button>
 
     case SelectState.Overlapped:
-      return <Button  variant='contained'className={classes.overlapped} color='secondary'></Button>
+      return <Button  variant='contained'className={classes.overlapped}></Button>
 
     case SelectState.Undecided:
       return <Button variant='contained' className={classes.undecided} color='secondary'></Button>

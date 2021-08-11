@@ -3,7 +3,6 @@ enum Direction {
     Down,
     Left,
     Right,
-    Clkwise,
     CounterClkwise
 }
 

@@ -5,19 +5,19 @@ class Aircraft {
   private position: Array<Array<[number, number]>>;
   private valid: Boolean;
   private static defaultPosition: Array<Array<[number, number]>> = [
-    [[4, 2]],
+    [[4, 6]],
     [
-      [2, 3],
-      [3, 3],
-      [4, 3],
-      [5, 3],
-      [6, 3],
-    ],
-    [[4, 4]],
-    [
+      [2, 5],
       [3, 5],
       [4, 5],
       [5, 5],
+      [6, 5],
+    ],
+    [[4, 4]],
+    [
+      [3, 3],
+      [4, 3],
+      [5, 3],
     ],
   ];
   constructor() {
@@ -26,11 +26,15 @@ class Aircraft {
   }
 
   getPosition() {
-    return this.position;
+    if (this.valid) {
+      return this.position;
+    } else {
+      return [];
+    }
   }
 
   move(direction: Direction) {
-    const positionCopy = _.cloneDeep(this.position);
+    const positionCopy = _.cloneDeep(this.getPosition());
     if (this.valid) {
       switch (direction) {
         case Direction.Left: {
@@ -57,7 +61,7 @@ class Aircraft {
           // the y coord of Aircraft is increased by 1 when moving up
           for (let i = 0; i < positionCopy.length; i++) {
             for (let j = 0; j < positionCopy[i].length; j++) {
-              positionCopy[i][j][1] -= 1;
+              positionCopy[i][j][1] += 1;
             }
           }
           break;
@@ -67,18 +71,23 @@ class Aircraft {
           // the y coord of Aircraft is decreased by 1 when moving down
           for (let i = 0; i < positionCopy.length; i++) {
             for (let j = 0; j < positionCopy[i].length; j++) {
-              positionCopy[i][j][1] += 1;
+              positionCopy[i][j][1] -= 1;
             }
           }
           break;
         }
 
         // to be implemented
-        case Direction.Clkwise: {
-          break;
-        }
-
         case Direction.CounterClkwise: {
+          const [centerX, centerY] = positionCopy[1][2]; // this is the rotation center
+          for (let i = 0; i < positionCopy.length; i++) {
+            for (let j = 0; j < positionCopy[i].length; j++) {
+              const [originalX, originalY] = positionCopy[i][j];
+              positionCopy[i][j][0] = centerX - (originalY - centerY);
+              positionCopy[i][j][1] = centerY + (originalX - centerX);
+            }
+          }
+
           break;
         }
 
@@ -92,7 +101,6 @@ class Aircraft {
 
     //check the validity of the move
     const coords = positionCopy.flat(2);
-    console.log(coords);
     if (coords.every((element: number) => element > -1 && element < 9)) {
       this.position = positionCopy;
     }
@@ -104,6 +112,10 @@ class Aircraft {
 
   destory() {
     this.valid = false;
+  }
+
+  validity() {
+    return this.valid;
   }
 }
 
